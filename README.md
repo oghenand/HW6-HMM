@@ -2,6 +2,10 @@
 
 In this assignment, you'll implement the Forward and Viterbi Algorithms (dynamic programming). This repository implements these aglorithms for hidden markov models (HMMs) to extract the probability of a sequence (with the Forward algorithm) and its most likely hidden state sequence (with the Viterbi algorithm). Both algorithms are implemented through dynamic programming, where results for subsequences are used to determine outputs for larger sequences like those commonly used for HMMs.
 
+The repository implements a HiddenMarkovModel class that takes in a set of possible observed states, hidden states, and probabilities for priors, emissions and transitions between states. The class has two methods: forward() and viterbi(). forward() takes in as input a sequence of observed states, and returns the probability of that particular sequence occurring. Instead of doing a brute-force check, it uses a dynamic programming algorithm to estimate the probabilities using probabilities of subsequences. viterbi() takes in a sequence of observed states and instead aims to find the hidden states that likely led to the observed sequence. It is complimentary to forward() and also uses a dynamic programming solution. 
+
+The class as a whole, and both methods, use np.ndarrays as the data structure for inputs and outputs.
+
 # Github Badge
 [![hmm_hw6](https://github.com/oghenand/HW6-HMM/actions/workflows/test.yml/badge.svg)](https://github.com/oghenand/HW6-HMM/actions/workflows/test.yml)
 
