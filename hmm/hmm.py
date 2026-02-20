@@ -83,7 +83,7 @@ class HiddenMarkovModel:
         #store probabilities of hidden state at each step 
         viterbi_table = np.zeros((T, S))
         #store best path for traceback
-        best_path = np.zeros(len(decode_observation_states), dtype=int)         
+        best_path = np.zeros(len(decode_observation_states), dtype=int) # set dtype to int to resolve backtracking bug         
         prev = np.empty((T, S), dtype=int)  # backpointer matrix (used to backtrack and find likeliest sequence)
 
         # Step 2. Calculate Probabilities
