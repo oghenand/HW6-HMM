@@ -1,6 +1,6 @@
 # HW6-HMM
 
-In this assignment, you'll implement the Forward and Viterbi Algorithms (dynamic programming). 
+In this assignment, you'll implement the Forward and Viterbi Algorithms (dynamic programming). This repository implements these aglorithms for hidden markov models (HMMs) to extract the probability of a sequence (with the Forward algorithm) and its most likely hidden state sequence (with the Viterbi algorithm). Both algorithms are implemented through dynamic programming, where results for subsequences are used to determine outputs for larger sequences like those commonly used for HMMs.
 
 # Github Badge
 [![hmm_hw6](https://github.com/oghenand/HW6-HMM/actions/workflows/test.yml/badge.svg)](https://github.com/oghenand/HW6-HMM/actions/workflows/test.yml)
