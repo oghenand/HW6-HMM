@@ -83,8 +83,8 @@ class HiddenMarkovModel:
         #store probabilities of hidden state at each step 
         viterbi_table = np.zeros((T, S))
         #store best path for traceback
-        best_path = np.zeros(len(decode_observation_states))         
-        prev = np.empty((T, S))  # backpointer matrix (used to backtrack and find likeliest sequence)
+        best_path = np.zeros(len(decode_observation_states), dtype=int)         
+        prev = np.empty((T, S), dtype=int)  # backpointer matrix (used to backtrack and find likeliest sequence)
 
         # Step 2. Calculate Probabilities
         obs_idx = self.observation_states_dict[decode_observation_states[0]] # extract proper idx in array
