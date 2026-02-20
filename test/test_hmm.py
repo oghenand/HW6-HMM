@@ -83,7 +83,7 @@ def test_full_weather():
     hmm = HiddenMarkovModel(observation_states, hidden_states,
                                     prior_p, transition_p, emission_p)
     # generate random sequence
-    ex_forward_inp = np.random.choice(hidden_states, size=10)
+    ex_forward_inp = np.random.choice(observation_states, size=10)
     forward_probability = hmm.forward(ex_forward_inp)
 
     # make sure probability in valid range
