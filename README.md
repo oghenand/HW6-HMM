@@ -2,6 +2,8 @@
 
 In this assignment, you'll implement the Forward and Viterbi Algorithms (dynamic programming). 
 
+# Github Badge
+[![hmm_hw6](https://github.com/oghenand/HW6-HMM/actions/workflows/test.yml/badge.svg)](https://github.com/oghenand/HW6-HMM/actions/workflows/test.yml)
 
 # Assignment
 
