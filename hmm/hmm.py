@@ -44,14 +44,14 @@ class HiddenMarkovModel:
         # Step 1. Initialize variables
         T = len(input_observation_states) # variable to store length of input sequence
         S = len(self.hidden_states) # number of hidden states
-        alpha = np.zeros((T, S))
+        alpha = np.zeros((T, S)) # initialize alpha (forward probability, for DP solution.)
 
         # initialize row 0 of alpha
-        obs_idx = self.observation_states_dict[input_observation_states[0]]
-        for s in range(S):
+        obs_idx = self.observation_states_dict[input_observation_states[0]] # extract idx of obs
+        for s in range(S): # set top row
             alpha[0][s] = self.prior_p[s] * self.emission_p[s][obs_idx]
 
-        # Step 2. Calculate probabilities
+        # Step 2. Calculate probabilities (use DP table)
         for t in range(1,T):
             obs_idx = self.observation_states_dict[input_observation_states[t]] # find proper idx
             for s in range(S):
@@ -84,16 +84,16 @@ class HiddenMarkovModel:
         viterbi_table = np.zeros((T, S))
         #store best path for traceback
         best_path = np.zeros(len(decode_observation_states))         
-        prev = np.empty((T, S))
+        prev = np.empty((T, S))  # backpointer matrix (used to backtrack and find likeliest sequence)
 
         # Step 2. Calculate Probabilities
-        obs_idx = self.observation_states_dict[decode_observation_states[0]]
-        for s in range(S):
+        obs_idx = self.observation_states_dict[decode_observation_states[0]] # extract proper idx in array
+        for s in range(S): # set top row
             viterbi_table[0][s] = self.prior_p[s] * self.emission_p[s][obs_idx]
         
-        for t in range(1, T):
-            obs_idx = self.observation_states_dict[decode_observation_states[t]]
-            for s in range(S):
+        for t in range(1, T): # iterate and use DP table to find optimal sequence for each sub-sequence
+            obs_idx = self.observation_states_dict[decode_observation_states[t]] # extract idx
+            for s in range(S): 
                 for r in range(S):
                     new_prob = viterbi_table[t-1][r] * self.transition_p[r][s] * self.emission_p[s][obs_idx]
                     if new_prob > viterbi_table[t][s]:
